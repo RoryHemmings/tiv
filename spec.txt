@@ -1,0 +1,44 @@
+############################
+Terminal Image Viewer Spec
+############################
+
+The Terminal Image Viewer (TIV) is a more advanced version of the original Console
+Image Viewer program. It is designed to run in the linux terminal, however it may well
+be cross platform.
+
+The core functionallity of the program takes an image and displays it in the console as
+an ascii representation in the terminal. This is achieved by storing a list of characters
+that take up increasingly more whitespace in their respective cells, and then mapping
+pixels of the image to each of these cells.
+
+The way this can be achieved varies and will include the following modes
+
+Regular 							- just maps pixel intensity to character
+Regular w/ shading    - same as regular, but also changes grayscale intensity of character
+Regular w/ color 			- same as regular, but also changes color of each character
+Block w/ shading			- keeps each character the same (■) but varies shading
+Block w/ color				- keeps each character the same (■) but varies color
+
+This program will function as an environment similar vim or emacs where there is a status
+bar at the bottom of the screen that displays information. Keyboard shortcuts can be
+pressed in order to modify the image being viewed.
+
+The information displayed will include the following:
+
+Image Path
+Original Image Dimensions
+Scaled Image Dimensions
+Horizontal Scalar
+Vertical Scalar
+
+Keyboard Shortcuts will also include the following:
+
+Scale the image
+Scale the image horizontally
+Scale the image vertically
+
+Open a new file
+Change the mode
+Change the verbosity
+
+
