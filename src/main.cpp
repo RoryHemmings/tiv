@@ -5,6 +5,9 @@
 
 int main(int argc, char** argv)
 {
-	std::cout << "Hello Rory" << std::endl;
+	// Window window(100, 100, "../img/test.png");
+	Image testImage("../img/test.png", 1.0, 1.0);
+	testImage.display();
+
 	return 0;
 }
