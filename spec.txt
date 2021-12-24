@@ -41,4 +41,24 @@ Open a new file
 Change the mode
 Change the verbosity
 
+Upon running the program, the image space will be blank. Once an image is opened, it will
+automatically scale to fit as much space as it can without overflowing the window. From 
+there, the user will be able to downscale the image either in both directions at once, or
+one direction at a time. They should also be able to upscale it in the same fashion, 
+unless this upscale exceeds the maximum window size. This size will be defined as the size 
+of the window which should be updated when the terminal window changes size (handled by
+the window object).
 
+The verbosity is defined as how detailed the set of characters is. These character sets
+can either reflect black pixels as high density characters such as @ or black pixels as
+low density characters like *. This depends on whether or not the font is white or black.
+
+All character sets (fonts) can be found here
+http://paulbourke.net/dataformats/asciiart/
+
+Whenever the window is resized, the image should be recreated with the current mode so that
+its never bigger than the window.
+
+
+Possible Features:
+Saving Art to a file
