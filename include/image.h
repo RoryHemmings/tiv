@@ -32,7 +32,7 @@ class Image
 		void Resize(double widthScale, double heightScale);
 
 			// Accessors
-		void 			 Display() const;
+		char       Sample(double x, double y, double width, double height, COLOR& color) const;
 		int  			 GetWidth() const;
 		int  			 GetHeight() const;
 		IMAGE_MODE GetMode() const { return m_mode; };
