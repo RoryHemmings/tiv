@@ -29,17 +29,17 @@ class Image
 					IMAGE_MODE mode=REGULAR);
 
 			// Mutators	
-		void Resize(double widthScale, heightScale);
+		void Resize(double widthScale, double heightScale);
 
 			// Accessors
 		void 			 Display() const;
 		int  			 GetWidth() const;
 		int  			 GetHeight() const;
-		IMAGE_MODE GetMode() const { return m_mode };
+		IMAGE_MODE GetMode() const { return m_mode; };
 
 	private:
 		Window* m_window;
-		Mat m_img;
+		cv::Mat m_img;
 
 		IMAGE_MODE m_mode;
 

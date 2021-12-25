@@ -1,14 +1,14 @@
 #include <iostream>
-#include "image.cpp"
+#include "image.h"
 
-Image::Image(Window* window, const std::string& imagePath, int maxWidth, int maxHeight, IMAGE_MODE=REGULAR)
+Image::Image(Window* window, const std::string& imagePath, int maxWidth, int maxHeight, IMAGE_MODE mode)
 	: m_window(window),
-		m_mode(mode),
+		m_mode(mode)
 {
 	m_img = cv::imread(imagePath, cv::IMREAD_COLOR);	
-	if (m_img::data == NULL)
+	if (m_img.data == NULL)
 	{
-		cerr << "Path: " << imagePath << " is invalid." << endl;
+		std::cerr << "Path: " << imagePath << " is invalid." << std::endl;
 		exit(1);
 	}
 
@@ -28,16 +28,16 @@ void Image::Resize(double widthScale, double heightScale)
 
 void Image::Display() const
 {
-	std::cout << "Width: " << GetWidth() << endl;
-	std::cout << "Height: " << GetHeight() << endl;
+	std::cout << "Width: " << GetWidth() << std::endl;
+	std::cout << "Height: " << GetHeight() << std::endl;
 }
 
-Image::GetWidth() const
+int Image::GetWidth() const
 {
 	return m_widthScale * m_img.cols;	
 }
 
-Image::GetHeight() const
+int Image::GetHeight() const
 {
 	return m_heightScale * m_img.rows;	
 }
