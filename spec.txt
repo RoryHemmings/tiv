@@ -40,6 +40,7 @@ Scale the image vertically
 Open a new file
 Change the mode
 Change the verbosity
+Change the interpolation algorithm
 
 Upon running the program, the image space will be blank. Once an image is opened, it will
 automatically scale to fit as much space as it can without overflowing the window. From 
@@ -58,6 +59,16 @@ http://paulbourke.net/dataformats/asciiart/
 
 Whenever the window is resized, the image should be recreated with the current mode so that
 its never bigger than the window.
+
+
+###############
+Program Design
+###############
+
+create application class - returns constant window pointer
+implement window class
+use nearest neighbor interpolation to return a string representing the space of character
+get pictures working in grayscale
 
 
 Possible Features:

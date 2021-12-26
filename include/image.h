@@ -15,6 +15,11 @@ enum IMAGE_MODE
 	BLOCK_COLOR
 };
 
+enum INTERPOLATION
+{
+	NEAREST_NEIGHBOR	
+};
+
 // Window forward declaration
 class Window;
 
@@ -32,10 +37,10 @@ class Image
 		void Resize(double widthScale, double heightScale);
 
 			// Accessors
-		char       Sample(double x, double y, double width, double height, COLOR& color) const;
-		int  			 GetWidth() const;
-		int  			 GetHeight() const;
-		IMAGE_MODE GetMode() const { return m_mode; };
+		std::string Sample(double x, double y, INTERPOLATION interpolation=NEAREST_NEIGHBOR) const;
+		int  			  GetWidth() const;
+		int  			  GetHeight() const;
+		IMAGE_MODE  GetMode() const { return m_mode; };
 
 	private:
 		Window* m_window;
