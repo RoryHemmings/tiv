@@ -5,7 +5,7 @@ const char CHARACTER_SET[] = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0
 const size_t CHARACTER_SET_LEN = 70;
 
 // Returns corresponding character. Note, pixelValue is in BGR form (thanks opencv)
-char pixelToCharacter(const cv::Vec3b& pixelValue)
+char pixelToCharacter(const cv::Vec3d& pixelValue)
 {
 	// Intensity conversion using CCIR 601 grayscale weights
 	int intensity = pixelValue[2]*0.2989 + pixelValue[1]*0.5870 + pixelValue[0]*0.1140;	
@@ -54,14 +54,15 @@ std::string Image::Sample(double x, double y, INTERPOLATION interpolation) const
 	if (x < 0 || x > 1 || y < 0 || y > 1)
 		return "";
 
-	int col = floor(x * (GetWidth()-1));	
-	int row = floor(y * (GetHeight()-1));	
+	int col = floor(x * GetWidth());	
+	int row = floor(y * GetHeight());	
 	
-	cv::Vec3b pixelValue = m_img.at<cv::Vec3b>(row, col);
+	cv::Vec3d pixelValue = m_img.at<cv::Vec3d>(row, col);
 	char c = pixelToCharacter(pixelValue);
+	std::cout << pixelValue[2] << " " << pixelValue[1] << " " << pixelValue[0] << " " << c << std::endl;
 
 	// TODO implement color
-	return "" + c + "";	
+	return std::to_string(c);	
 }
 
 int Image::GetWidth() const
