@@ -16,14 +16,13 @@ Window::~Window()
 void Window::Draw()
 {
   // Clear();
-  for (m_row = 0; m_row < m_nRows; m_row++)
+  for (m_row = 0; m_row < m_img->GetHeight(); m_row++)
   {
-    for (m_col = 0; m_col < m_nCols; m_col++)
+    for (m_col = 0; m_col < m_img->GetWidth(); m_col++)
     {
-      // std::cout << m_img->Sample(m_col/static_cast<double>(m_nCols), m_row/static_cast<double>(m_nRows));
-      m_img->Sample(m_col/static_cast<double>(m_nCols), m_row/static_cast<double>(m_nRows));
+      std::cout << m_img->Sample(m_col/static_cast<double>(m_nCols), m_row/static_cast<double>(m_nRows));
     }
-    // std::cout << std::endl;
+    std::cout << std::endl;
   }
 }
 

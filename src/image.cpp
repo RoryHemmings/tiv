@@ -1,11 +1,11 @@
 #include <iostream>
 #include "image.h"
 
-const char CHARACTER_SET[] = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$)}]";
+const char CHARACTER_SET[71] = " .'`^\",:;Il!i><~+_-?][}{1)(|\\/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$";
 const size_t CHARACTER_SET_LEN = 70;
 
 // Returns corresponding character. Note, pixelValue is in BGR form (thanks opencv)
-char pixelToCharacter(const cv::Vec3d& pixelValue)
+char pixelToCharacter(const cv::Vec3b& pixelValue)
 {
 	// Intensity conversion using CCIR 601 grayscale weights
 	int intensity = pixelValue[2]*0.2989 + pixelValue[1]*0.5870 + pixelValue[0]*0.1140;	
@@ -18,7 +18,8 @@ Image::Image(Window* window, const std::string& imagePath, int maxWidth, int max
 	: m_window(window),
 		m_mode(mode)
 {
-	m_img = cv::imread(imagePath, cv::IMREAD_COLOR);	
+	// m_img = cv::imread(imagePath, cv::IMREAD_COLOR);	
+	m_img = cv::imread(imagePath);	
 	if (m_img.data == NULL)
 	{
 		std::cerr << "Path: " << imagePath << " is invalid." << std::endl;
@@ -54,15 +55,15 @@ std::string Image::Sample(double x, double y, INTERPOLATION interpolation) const
 	if (x < 0 || x > 1 || y < 0 || y > 1)
 		return "";
 
-	int col = floor(x * GetWidth());	
-	int row = floor(y * GetHeight());	
+	int col = floor(x * m_img.cols);	
+	int row = floor(y * m_img.rows);	
 	
-	cv::Vec3d pixelValue = m_img.at<cv::Vec3d>(row, col);
+	cv::Vec3b pixelValue = m_img.at<cv::Vec3b>(row, col);
 	char c = pixelToCharacter(pixelValue);
-	std::cout << pixelValue[2] << " " << pixelValue[1] << " " << pixelValue[0] << " " << c << std::endl;
 
-	// TODO implement color
-	return std::to_string(c);	
+		// TODO implement color
+	std::string ret = "";
+	return ret + c;	
 }
 
 int Image::GetWidth() const
