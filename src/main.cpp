@@ -6,7 +6,7 @@
 int main(int argc, char** argv)
 {
   Window window(50, 50);
-	window.SetImage("img/person.png");
+	window.SetImage("img/test.png");
 	window.Draw();
 
   return 0;

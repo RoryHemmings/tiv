@@ -73,4 +73,8 @@ get pictures working in grayscale
 
 Possible Features:
 Saving Art to a file
+Implement support for non truecolor color https://stackoverflow.com/questions/15682537/ansi-color-specific-rgb-sequence-bash
 make range of colors between brightest and least bright pixels
+
+TODO:
+implement color/shading/interpolation

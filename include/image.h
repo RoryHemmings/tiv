@@ -31,13 +31,14 @@ class Image
 					const std::string& path, 
 					int maxWidth, 
 					int maxHeight, 
-					IMAGE_MODE mode=REGULAR);
+					IMAGE_MODE mode=REGULAR,
+					INTERPOLATION interpolation=NEAREST_NEIGHBOR);
 
 			// Mutators	
 		void Resize(double widthScale, double heightScale);
 
 			// Accessors
-		std::string Sample(double x, double y, INTERPOLATION interpolation=NEAREST_NEIGHBOR) const;
+		std::string Sample(double x, double y) const;
 		int  			  GetWidth() const;
 		int  			  GetHeight() const;
 		IMAGE_MODE  GetMode() const { return m_mode; };
@@ -47,6 +48,7 @@ class Image
 		cv::Mat m_img;
 
 		IMAGE_MODE m_mode;
+		INTERPOLATION m_interpolation;
 
 		double m_widthScale;
 		double m_heightScale;
